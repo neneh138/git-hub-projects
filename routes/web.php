@@ -10,7 +10,16 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+//Route::get('/', function () {return view('welcome');});
+//Route::get('/users/{id}/{name}', function($id, $name) {return 'This is user '.$name.' with ad id of ' .$id;});
+//Route::get('/about', function () {return view('pages.about');});
 
-Route::get('/', function () {
-    return view('welcome');
-});
+
+Route::get('/', 'PagesController@index');
+Route::get('/about', 'PagesController@about');
+Route::get('/services', 'PagesController@services');
+
+Route::resource('posts','PostsController');
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
